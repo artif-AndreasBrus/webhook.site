@@ -9,7 +9,7 @@ window.copyToClipboard = require('copy-to-clipboard');
 
 window.hljs = require('highlight.js/lib/highlight');
 var javascript = require('highlight.js/lib/languages/javascript');
-var xml = require('highlight.js/lib/languages/javascript');
+var xml = require('highlight.js/lib/languages/xml');
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('xml', xml);
 
