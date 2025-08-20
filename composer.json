@@ -5,8 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.1.0",
-        "laravel/framework": "5.4.*",
+        "php": ">=7.1.3",
+        "laravel/framework": "5.8.*",
         "webpatser/laravel-uuid": "^2.0",
         "pusher/pusher-php-server": "^2.6",
         "doctrine/dbal": "^2.5",
@@ -42,12 +42,14 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
-            "php artisan optimize"
+            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan clear-compiled",
-            "php artisan optimize"
+            "php artisan clear-compiled"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "php artisan package:discover --ansi"
         ]
     },
     "config": {

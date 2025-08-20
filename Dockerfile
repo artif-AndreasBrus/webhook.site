@@ -42,7 +42,6 @@ ADD --chown=www-data:www-data /app /var/www/html/app
 
 RUN composer dump-autoload --optimize --no-dev \
     && touch /var/www/html/database/database.sqlite \
-    && php artisan optimize \
     && php artisan migrate
 
 ADD --chown=www-data:www-data /resources /var/www/html/resources
