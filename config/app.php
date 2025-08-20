@@ -1,13 +1,13 @@
 <?php
 
 return [
-  
+
     /*
     |--------------------------------------------------------------------------
     | Webhook Tester-specific Configuration
     |--------------------------------------------------------------------------
     */
-    
+
     // How many requests each URL will log before returning a 410 Gone, and the user
     // will have to create a new URL.
     'max_requests' => env('WEBHOOK_MAX_REQUESTS', 500),
@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
 
-        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        Sentry\Laravel\ServiceProvider::class,
 
     ],
 

@@ -9,6 +9,6 @@ return array(
     // Capture bindings on SQL queries
     'breadcrumbs.sql_bindings' => true,
 
-    // Capture default user context
-    'user_context' => true,
+    // Capture default user context (renamed in Sentry SDK v2)
+    'send_default_pii' => true,
 );
