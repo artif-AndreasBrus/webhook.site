@@ -32,3 +32,40 @@ There are two versions of Webhook.site:
 * This documentation site uses [Just the Docs](https://github.com/pmarsceill/just-the-docs), a documentation theme for Jekyll.
 
 **[Full Documentation at docs.webhook.site](https://docs.webhook.site)**
+
+
+## Complete the upgrade and verify (ddev)
+
+Prerequisites:
+- DDEV installed and running on your machine.
+- Run these commands from the project root.
+
+Node.js runtime inside ddev:
+- This repo pins Node.js 22 for the web container via .ddev/config.yaml (nodejs_version: "22"). If your containers were already running, restart them: ddev restart
+
+One‑liner (recommended):
+- bash scripts/complete-upgrade.sh
+  - If you get a permission error: chmod +x scripts/complete-upgrade.sh && ./scripts/complete-upgrade.sh
+
+What the script does:
+- ddev start
+- Composer update, then clears Laravel caches and runs database migrations
+- npm ci (or npm install), npm audit fix, npm run build (Laravel Mix 6)
+- Basic verification: php artisan about and route:list
+
+Manual commands (alternative):
+- ddev start
+- ddev exec composer update --no-interaction --prefer-dist
+- ddev exec php artisan config:clear && ddev exec php artisan cache:clear && ddev exec php artisan view:clear && ddev exec php artisan route:clear
+- ddev exec php artisan migrate --force
+- ddev exec npm ci || ddev exec npm install
+- ddev exec npm audit fix || true
+- ddev exec npm run build
+
+Open the site:
+- Run ddev describe and open the provided URL (typically https://<project>.ddev.site)
+
+Notes:
+- Asset output paths are preserved: public/js/libs.js, public/js/bundle.js, public/css/app.css
+- resources/views/app.php already references js/socket.io.js, js/libs.js, js/bundle.js
+- If highlight.js or other frontend scripts misbehave, run ddev exec npm run build again.
