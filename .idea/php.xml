@@ -140,7 +140,7 @@
       </interpreter>
     </interpreters>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
   <component name="PhpStan">
     <PhpStan_settings>
       <phpstan_by_interpreter asDefaultInterpreter="true" interpreter_id="5d43eca4-5b71-4b96-b755-2c7986e872f3" timeout="60000" />
