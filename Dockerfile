@@ -1,17 +1,17 @@
 ##############################################
-# Stage 1: Install node dependencies and run gulp
+# Stage 1: Install node dependencies and build assets with Laravel Mix
 ##############################################
 
-FROM node:11 as npm
+FROM node:18 as npm
 WORKDIR /app
 
 COPY package.json /app
 COPY package-lock.json /app
-RUN npm install
+RUN npm ci || npm install
 
 COPY resources /app/resources
-COPY gulpfile.js /app
-RUN npm run gulp
+COPY webpack.mix.js /app
+RUN npm run build
 
 ##############################################
 # Stage 2: Composer, nginx and fpm
